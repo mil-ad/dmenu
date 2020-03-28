@@ -9,7 +9,7 @@ depends=('sh' 'libxinerama' 'libxft' 'freetype2')
 source=(git+$url)
 md5sums=('SKIP')
 sha256sums=('SKIP')
-provides=(dmenu)
+provides=(dmenu dmenu-manjaro)
 conflicts=(dmenu)
 makedepends=(git)
 
