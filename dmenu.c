@@ -623,6 +623,14 @@ readstdin(void)
 
 	/* read each line from stdin and add it to the item list */
 	for (i = 0; fgets(buf, sizeof buf, stdin); i++) {
+
+		/* Milad: Added this simple check so that dmenu can be used for simple
+		 * text input e.g. when using for search engines. Without this there's
+		 * an extra character before typing has begun.
+		 */
+		if (0 == i && 1 == strlen(buf))
+			return;
+
 		if (i + 1 >= size / sizeof *items)
 			if (!(items = realloc(items, (size += BUFSIZ))))
 				die("cannot realloc %u bytes:", size);
