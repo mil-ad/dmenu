@@ -57,8 +57,8 @@ static Clr *scheme[SchemeLast];
 
 #include "config.h"
 
-static int (*fstrncmp)(const char *, const char *, size_t) = strncmp;
-static char *(*fstrstr)(const char *, const char *) = strstr;
+static int (*fstrncmp)(const char *, const char *, size_t);
+static char *(*fstrstr)(const char *, const char *);
 
 static void
 appenditem(struct item *item, struct item **list, struct item **last)
@@ -818,6 +818,14 @@ main(int argc, char *argv[])
 {
 	XWindowAttributes wa;
 	int i, fast = 0;
+
+	if (case_insensitive) {
+		fstrncmp = strncasecmp;
+		fstrstr = cistrstr;
+	} else {
+		fstrncmp = strncmp;
+		fstrstr = strstr;
+	}
 
 	for (i = 1; i < argc; i++)
 		/* these options take no arguments */
