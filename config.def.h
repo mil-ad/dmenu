@@ -8,7 +8,9 @@ static int min_width = 750;                /* minimum width when centered */
 
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"Cascadia Code PL:size=12",
+	"Iosevka:style=Medium,size=12",
+	"Vazirmatn:style=Regular,size=12",
+	//"Cascadia Code PL:size=12",
 	// "monospace:size=12",
 	// "JoyPixels:pixelsize=24:antialias=true:autohint=true"
 	"Noto Color Emoji:pixelsize=24:antialias=true:autohint=true"
