@@ -651,14 +651,6 @@ readstdin(void)
 
 	/* read each line from stdin and add it to the item list */
 	for (i = 0; (len = getline(&line, &junk, stdin)) != -1; i++) {
-
-		/* Milad: Added this simple check so that dmenu can be used for simple
-		 * text input e.g. when using for search engines. Without this there's
-		 * an extra character before typing has begun.
-		 */
-		// if (0 == i && 1 == strlen(buf))
-			// return;
-
 		if (i + 1 >= itemsiz) {
 			itemsiz += 256;
 			if (!(items = realloc(items, itemsiz * sizeof(*items))))
@@ -666,6 +658,12 @@ readstdin(void)
 		}
 		if (line[len - 1] == '\n')
 			line[len - 1] = '\0';
+
+		/*	Milad: Added this check so that dmenu can be used for simple text
+			input e.g. when using for search engines. Without this there's an
+			extra character before typing has begun. */
+		if (0 == i && line[0] == '\0')
+			return;
 		items[i].text = line;
 		items[i].out = 0;
 		line = NULL; /* next call of getline() allocates a new line */
