@@ -10,15 +10,15 @@ static int min_width = 750;                /* minimum width when centered */
 static const char *fonts[] = {
 	"Iosevka:style=Medium,size=12",
 	"Vazirmatn:style=Regular,size=12",
+	"Noto Color Emoji:pixelsize=24:antialias=true:autohint=true"
 	//"Cascadia Code PL:size=12",
 	// "monospace:size=12",
 	// "JoyPixels:pixelsize=24:antialias=true:autohint=true"
-	"Noto Color Emoji:pixelsize=24:antialias=true:autohint=true"
 };
 static const char *prompt = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#222222" },
+	[SchemeNorm] = { "#fbf1c7", "#222222" },
 	[SchemeSel] = { "#1d2021", "#d79921" },
 	[SchemeOut] = { "#000000", "#00ffff" },
 };
